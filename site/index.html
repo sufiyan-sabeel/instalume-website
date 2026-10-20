@@ -4,14 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>InstaLume — Your experience. Reimagined.</title>
-<meta name="description" content="InstaLume is an independently customized Android client project with a distinctive visual identity and transparent release information. Unofficial, not affiliated with Meta or Instagram.">
+<meta name="description" content="InstaLume is an independently customized Android client project by Umaiz Sufiyan, with a distinctive visual identity and transparent release information. Unofficial, not affiliated with Meta or Instagram.">
 <meta name="theme-color" content="#050505">
 <meta name="color-scheme" content="dark">
+<meta name="author" content="Umaiz Sufiyan">
+<link rel="canonical" href="https://sufiyan-sabeel.github.io/instalume-website/">
 <meta property="og:title" content="InstaLume — Your experience. Reimagined.">
 <meta property="og:description" content="An independently customized Android client project with transparent release information.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sufiyan-sabeel.github.io/instalume-website/">
+<meta property="og:site_name" content="InstaLume">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="InstaLume — Your experience. Reimagined.">
+<meta name="twitter:description" content="An independently customized Android client project with transparent release information.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "InstaLume",
+  "applicationCategory": "MobileApplication",
+  "operatingSystem": "Android 9+ (API 28 and above)",
+  "downloadUrl": "https://github.com/sufiyan-sabeel/Insta-Lume/releases",
+  "codeRepository": "https://github.com/sufiyan-sabeel/Insta-Lume",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Umaiz Sufiyan", "url": "https://github.com/sufiyan-sabeel" },
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -35,9 +56,10 @@
       <a href="#features">Features</a>
       <a href="#docs">Docs</a>
       <a href="#faq">FAQ</a>
+      <a href="#creator">Creator</a>
     </nav>
 
-    <a class="btn btn-ghost btn-sm" href="https://github.com/sufiyan-sabeel/Insta-Lume" target="_blank" rel="noopener noreferrer">
+    <a class="btn btn-ghost btn-sm header-gh" href="https://github.com/sufiyan-sabeel/Insta-Lume" target="_blank" rel="noopener noreferrer">
       <svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
       <span>GitHub</span>
     </a>
@@ -67,6 +89,12 @@
           <a class="btn btn-ghost" href="https://github.com/sufiyan-sabeel/Insta-Lume" target="_blank" rel="noopener noreferrer">Explore on GitHub</a>
         </div>
         <p class="cta-caption">Review release notes and compatibility before installing.</p>
+
+        <ul class="hero-facts">
+          <li>CI-signed releases</li>
+          <li>No APK committed</li>
+          <li>Open docs &amp; security policy</li>
+        </ul>
       </div>
 
       <div class="hero-art" aria-hidden="false">
@@ -87,9 +115,9 @@
                   <stop offset="1" stop-color="#D6D8DC"/>
                 </linearGradient>
                 <linearGradient id="gSilver" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#FFFFFF"/>
-                  <stop offset="0.45" stop-color="#C5C7CC"/>
-                  <stop offset="1" stop-color="#7E8288"/>
+                  <stop offset="0" style="stop-color:var(--accent-bright)"/>
+                  <stop offset="0.45" style="stop-color:var(--accent)"/>
+                  <stop offset="1" style="stop-color:var(--accent-deep)"/>
                 </linearGradient>
                 <radialGradient id="gLight" cx="0.5" cy="0.26" r="0.78">
                   <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
@@ -103,15 +131,12 @@
 
               <ellipse cx="210" cy="374" rx="126" ry="20" fill="#000000" opacity="0.65" filter="url(#soft)"/>
 
-              <!-- depth / extrusion -->
               <rect x="74" y="98" width="272" height="272" rx="70" fill="#09090a"/>
               <rect x="72" y="88" width="272" height="272" rx="70" fill="#0d0e10"/>
-              <!-- front plate -->
               <rect x="70" y="76" width="272" height="272" rx="70" fill="url(#gPlate)" stroke="url(#gRim)" stroke-width="2.5"/>
               <rect x="86" y="92" width="240" height="240" rx="58" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1.5"/>
               <rect x="70" y="76" width="272" height="272" rx="70" fill="url(#gLight)"/>
 
-              <!-- camera glyph -->
               <g stroke="url(#gSilver)" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="126" y="132" width="160" height="160" rx="46"/>
                 <circle cx="206" cy="212" r="44"/>
@@ -322,18 +347,67 @@
 
   <!-- ===================== CREATOR ===================== -->
   <section class="section section-alt" id="creator" aria-labelledby="creator-title">
-    <div class="container narrow center">
-      <p class="eyebrow">Creator &amp; attribution</p>
+    <div class="container">
+      <p class="eyebrow">Creator</p>
       <h2 id="creator-title">Built by Umaiz Sufiyan</h2>
-      <p class="section-lede">
+      <p class="section-lede">Student developer, Karnataka, India.</p>
+
+      <div class="profile">
+        <div class="profile-head">
+          <div class="profile-avatar" aria-hidden="true">US</div>
+          <div class="profile-id">
+            <h3>Umaiz Sufiyan</h3>
+            <p class="profile-role">Student developer · Karnataka, India</p>
+          </div>
+          <a class="btn btn-ghost btn-sm profile-gh" href="https://github.com/sufiyan-sabeel" target="_blank" rel="noopener noreferrer">
+            <svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+        <p class="profile-bio">
+          I build AI tools, Android apps and websites — most of it straight from my Android
+          phone using Termux. I'm passionate about AI/ML, automation, open-source software
+          and startup development, and my goal is to build powerful, secure and genuinely
+          useful AI-powered products.
+        </p>
+
+        <ul class="chips" aria-label="Tools and languages">
+          <li>Kotlin</li>
+          <li>Jetpack Compose</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>GitHub</li>
+          <li>Termux</li>
+        </ul>
+
+        <div class="profile-grid">
+          <div class="profile-block">
+            <h4>Focus</h4>
+            <p>AI/ML · Automation · Open source · Startup development</p>
+          </div>
+          <div class="profile-block">
+            <h4>Projects</h4>
+            <p>AIRIS-CLI · KageOS · Vilo Manager · <a href="https://github.com/sufiyan-sabeel/Insta-Lume" target="_blank" rel="noopener noreferrer">InstaLume</a></p>
+          </div>
+          <div class="profile-block">
+            <h4>Environment</h4>
+            <p>Develops on Android with Termux — phone-friendly, offline-first tooling.</p>
+          </div>
+        </div>
+
+        <div class="profile-links">
+          <a class="btn btn-ghost btn-sm" href="https://github.com/sufiyan-sabeel" target="_blank" rel="noopener noreferrer">GitHub · sufiyan-sabeel</a>
+          <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/umaizsufiyan.78/" target="_blank" rel="noopener noreferrer">Instagram · @umaizsufiyan.78</a>
+          <a class="btn btn-ghost btn-sm" href="mailto:riyazo65ckm@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <p class="attribution">
         InstaLume rebrand, packaging and releases by <strong>Umaiz Sufiyan</strong>.
         The original work this project rebrands — the <em>InstaZen</em> mod — is by
         <strong>SpoilerTech</strong>, and full credit for it is preserved.
       </p>
-      <a class="btn btn-ghost" href="https://github.com/sufiyan-sabeel/Insta-Lume" target="_blank" rel="noopener noreferrer">
-        <svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-        <span>View on GitHub</span>
-      </a>
     </div>
   </section>
 
@@ -343,7 +417,7 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <span class="brand-name">InstaLume</span>
-      <p class="muted">An independently customized Android client project.</p>
+      <p class="muted">An independently customized Android client project by Umaiz Sufiyan.</p>
     </div>
     <nav class="footer-col" aria-label="Project">
       <h4>Project</h4>
@@ -354,8 +428,9 @@
     <nav class="footer-col" aria-label="More">
       <h4>More</h4>
       <a href="https://github.com/sufiyan-sabeel/Insta-Lume/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security policy</a>
-      <a href="#creator">Creator credit</a>
+      <a href="#creator">Creator</a>
       <a href="#faq">FAQ</a>
+      <a href="#top">Back to top</a>
     </nav>
   </div>
   <div class="container footer-legal">
@@ -367,6 +442,32 @@
     <p class="muted">© <span id="year">2026</span> Umaiz Sufiyan. InstaLume.</p>
   </div>
 </footer>
+
+<!-- ===================== ACCENT COLOUR PICKER ===================== -->
+<div class="theme-dock" data-theme-dock>
+  <div class="theme-panel" id="theme-panel" hidden>
+    <div class="theme-panel-head">
+      <span>Accent colour</span>
+      <button type="button" class="theme-close" data-theme-close aria-label="Close customiser">&#215;</button>
+    </div>
+    <div class="swatches" role="radiogroup" aria-label="Accent colour">
+      <button type="button" class="swatch" role="radio" aria-checked="true"  data-accent="#c5c7cc" aria-label="Silver"  style="--sw:#c5c7cc"></button>
+      <button type="button" class="swatch" role="radio" aria-checked="false" data-accent="#7fd4e8" aria-label="Cyan"    style="--sw:#7fd4e8"></button>
+      <button type="button" class="swatch" role="radio" aria-checked="false" data-accent="#b39ddb" aria-label="Violet"  style="--sw:#b39ddb"></button>
+      <button type="button" class="swatch" role="radio" aria-checked="false" data-accent="#7fd6a8" aria-label="Emerald" style="--sw:#7fd6a8"></button>
+      <button type="button" class="swatch" role="radio" aria-checked="false" data-accent="#e8c37f" aria-label="Amber"   style="--sw:#e8c37f"></button>
+      <button type="button" class="swatch" role="radio" aria-checked="false" data-accent="#e8a3b3" aria-label="Rose"    style="--sw:#e8a3b3"></button>
+    </div>
+    <label class="theme-custom">
+      <span>Custom colour</span>
+      <input type="color" data-theme-custom value="#c5c7cc" aria-label="Custom accent colour">
+    </label>
+    <button type="button" class="btn btn-quiet btn-sm theme-reset" data-theme-reset>Reset to default</button>
+  </div>
+  <button type="button" class="theme-fab" data-theme-toggle aria-expanded="false" aria-controls="theme-panel" aria-label="Customise accent colour">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.5-1.9-.3-1 .4-1.9 1.4-1.9H16a5 5 0 0 0 5-5c0-5-4-9.2-9-9.2Z"/><circle cx="7.6" cy="12" r="1.2" fill="currentColor"/><circle cx="9.8" cy="8" r="1.2" fill="currentColor"/><circle cx="14.4" cy="7.6" r="1.2" fill="currentColor"/></svg>
+  </button>
+</div>
 
 <script src="assets/js/main.js" defer></script>
 </body>

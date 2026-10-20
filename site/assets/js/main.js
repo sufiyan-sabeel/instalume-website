@@ -1,5 +1,6 @@
 /* =========================================================
    InstaLume — site behaviour
+   - accent-colour picker (remembered in the browser)
    - restrained 3D tilt on the logo
    - real release metadata from GitHub (with graceful fallback)
    - tactile download button states
@@ -12,13 +13,113 @@
   var RELEASES_PAGE = "https://github.com/" + REPO + "/releases";
   var LATEST_API = "https://api.github.com/repos/" + REPO + "/releases/latest";
 
+  var THEME_KEY = "instalume:accent";
+  var DEFAULT_ACCENT = "#c5c7cc";
+
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var root = document.documentElement;
 
   /* ---------------- footer year ---------------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ---------------- 3D logo tilt ---------------- */
+  /* ---------------- header shadow on scroll ---------------- */
+  (function headerShadow() {
+    function onScroll() {
+      document.body.classList.toggle("is-scrolled", window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+
+  /* =========================================================
+     Accent colour
+     ========================================================= */
+  function hexToRgb(hex) {
+    var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(String(hex).trim());
+    if (!m) return null;
+    return [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)];
+  }
+  function rgbToHex(r, g, b) {
+    return "#" + [r, g, b].map(function (v) {
+      v = Math.max(0, Math.min(255, Math.round(v)));
+      return ("0" + v.toString(16)).slice(-2);
+    }).join("");
+  }
+  function mix(hex, target, t) {
+    var c = hexToRgb(hex), tc = hexToRgb(target);
+    if (!c || !tc) return hex;
+    return rgbToHex(c[0] + (tc[0] - c[0]) * t, c[1] + (tc[1] - c[1]) * t, c[2] + (tc[2] - c[2]) * t);
+  }
+
+  function applyAccent(hex) {
+    var rgb = hexToRgb(hex);
+    if (!rgb) return;
+    var h = rgbToHex(rgb[0], rgb[1], rgb[2]);
+    root.style.setProperty("--accent", h);
+    root.style.setProperty("--accent-bright", mix(h, "#ffffff", 0.70));
+    root.style.setProperty("--accent-deep", mix(h, "#000000", 0.38));
+    root.style.setProperty("--accent-glow", rgb.join(","));
+
+    var input = document.querySelector("[data-theme-custom]");
+    if (input) input.value = h;
+
+    var sws = document.querySelectorAll(".swatch");
+    for (var i = 0; i < sws.length; i++) {
+      var on = String(sws[i].getAttribute("data-accent")).toLowerCase() === h.toLowerCase();
+      sws[i].setAttribute("aria-checked", on ? "true" : "false");
+    }
+    try { localStorage.setItem(THEME_KEY, h); } catch (e) { /* storage blocked */ }
+  }
+
+  (function themePicker() {
+    var dock = document.querySelector("[data-theme-dock]");
+    if (!dock) return;
+    var toggle = dock.querySelector("[data-theme-toggle]");
+    var panel = dock.querySelector("#theme-panel");
+    var closeBtn = dock.querySelector("[data-theme-close]");
+    var custom = dock.querySelector("[data-theme-custom]");
+    var reset = dock.querySelector("[data-theme-reset]");
+    var sws = Array.prototype.slice.call(dock.querySelectorAll(".swatch"));
+
+    function open() { if (panel) { panel.hidden = false; toggle.setAttribute("aria-expanded", "true"); } }
+    function close() { if (panel) { panel.hidden = true; toggle.setAttribute("aria-expanded", "false"); } }
+
+    if (toggle) toggle.addEventListener("click", function () { panel.hidden ? open() : close(); });
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    document.addEventListener("click", function (e) { if (!dock.contains(e.target)) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+    sws.forEach(function (sw) {
+      sw.addEventListener("click", function () { applyAccent(sw.getAttribute("data-accent")); });
+    });
+
+    var group = dock.querySelector(".swatches");
+    if (group) {
+      group.addEventListener("keydown", function (e) {
+        var keys = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
+        if (keys.indexOf(e.key) === -1) return;
+        var idx = sws.indexOf(document.activeElement);
+        if (idx < 0) return;
+        e.preventDefault();
+        var dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : -1;
+        var next = sws[(idx + dir + sws.length) % sws.length];
+        next.focus();
+        applyAccent(next.getAttribute("data-accent"));
+      });
+    }
+
+    if (custom) custom.addEventListener("input", function () { applyAccent(custom.value); });
+    if (reset) reset.addEventListener("click", function () { applyAccent(DEFAULT_ACCENT); });
+
+    var saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
+    applyAccent(saved || DEFAULT_ACCENT);
+  })();
+
+  /* =========================================================
+     3D logo tilt
+     ========================================================= */
   (function logo() {
     var stage = document.querySelector("[data-logo-stage]");
     var plate = document.querySelector("[data-logo-plate]");
@@ -53,7 +154,9 @@
     stage.addEventListener("pointercancel", reset);
   })();
 
-  /* ---------------- release metadata ---------------- */
+  /* =========================================================
+     Release metadata
+     ========================================================= */
   var $ = function (id) { return document.getElementById(id); };
 
   function formatBytes(n) {
@@ -146,7 +249,6 @@
       (function (a) {
         a.addEventListener("click", function () {
           a.classList.add("is-loading");
-          // Navigation / download proceeds normally via the anchor href.
           window.setTimeout(function () { a.classList.remove("is-loading"); }, 6000);
         });
       })(links[i]);
